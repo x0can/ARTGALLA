@@ -10,14 +10,14 @@ class Category (models.Model):
     def save_category(self):
         self.save()
 
-    # def display_category(self):
-    #     category = Category.objects.all()
-    #     return category
+    def display_category(self):
+        category = Category.objects.all()
+        return category
 
-    @classmethod
-    def art_search(cls,search_term):
-        art = cls.objects.filter(title__icontains = search_term)
-        return art
+    # @classmethod
+    # def art_search(cls,search_term):
+    #     art = cls.objects.filter(title__icontains = search_term)
+    #     return art
 
 
     class Meta:
@@ -51,12 +51,27 @@ class Art(models.Model):
         self.save()
 
 
+
+
+    @classmethod
+    def art_search_art(cls,art_category):
+        art = cls.objects.filter(art_category__title__icontains = art_category)
+        return art
+
     def __str__(self):
         return self.art_name
 
+
     @classmethod
-    def art_search_art(cls,search_term):
-        art = cls.objects.filter(art_name__icontains = search_term)
+    def get_art_by_id(cls,id):
+        art = cls.objects.filter(id=id).all()
         return art
 
-    
+    @classmethod
+    def filter_by_location(cls,art_location):
+        art = cls.objects.filter(art_location__place__icontains = art_location)
+        return art
+
+
+    class Meta:
+        ordering = ['art_name']    
