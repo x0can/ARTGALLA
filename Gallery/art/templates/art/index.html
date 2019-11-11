@@ -101,7 +101,7 @@ function myFunction(){
                     <div class="modal-footer">
                       
                         {% if art %}
-                        <input type="text" id="myInput" value="https://artist21.herokuapp.com/{{art.art_image.url}}" >
+                        <input type="text" id="myInput" value="https://artist21.herokuapp.com{{art.art_image.url}}" >
                         <button class="btn btn-primary" onclick="myFunction()">
                             Copy Link
                         </button>

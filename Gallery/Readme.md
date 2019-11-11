@@ -7,7 +7,7 @@
 This is a django application that display images for different categories and locations
 
 ## Live Link
-[View Site]()
+[View Site](https://artist21.herokuapp.com/)
 
 
 
