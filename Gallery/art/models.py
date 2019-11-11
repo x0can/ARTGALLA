@@ -27,11 +27,6 @@ class Location (models.Model):
 
     place = models.CharField(max_length = 30)
 
-    def __str__(self):
-        return self.place
-
-
-
 
     def save_place(self):
         self.save()
@@ -39,6 +34,10 @@ class Location (models.Model):
     def display_location(self):
         location = Location.objects.all()
         return location                
+
+    def __str__(self):
+        return self.place    
+
 
 class Art(models.Model):
     art_name = models.CharField(max_length = 60)
@@ -63,8 +62,8 @@ class Art(models.Model):
 
 
     @classmethod
-    def get_art_by_id(cls,id):
-        art = cls.objects.filter(id=id).all()
+    def get_art(cls,art_name):
+        art = cls.objects.filter(art_name__icontains=art_name)
         return art
 
     @classmethod
