@@ -14,6 +14,13 @@ class Category (models.Model):
         category = Category.objects.all()
         return category
 
+
+    def delete_category(self):
+        category = Category.objects.filter().delete()
+        return category
+
+
+        
     # @classmethod
     # def art_search(cls,search_term):
     #     art = cls.objects.filter(title__icontains = search_term)
