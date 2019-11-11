@@ -1,4 +1,4 @@
-# BLOGGERS
+# ARTGALLA
 ## Author
 
 [Alex-Mwaura](https://github.com/alexmwaura)
