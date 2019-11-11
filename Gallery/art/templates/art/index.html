@@ -1,0 +1,134 @@
+{% extends 'art/base.html' %}
+
+{% block content %}
+
+{{block.super}}
+
+
+<script>
+
+function CopyFunction() {
+  var copyText = document.getElementById("imagelink");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+
+
+</script>
+
+
+
+<div class="container">
+  
+  </div>
+
+  <div class="jumbotron " style="background-color: #333333;">
+
+
+        <!-- Dropdown Trigger -->
+
+                
+        <div class="dropdown">
+                
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Location
+                </button>
+                
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for location in location %}
+
+                    <form action="{% url 'location' %}
+                    ">
+                    <input class="dropdown-item" name="location" type="hidden" value="{{location.place}}"><button type="submit" class="btn btn-secondary " class="form-control-range">{{location.place}}</button></form>
+                  
+                            
+                  {% endfor %}
+                </div>
+               
+              </div>
+    
+              <div class="dropdown">
+    
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Category
+                    </button>
+                    
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {% for category in category %}
+                      <a class="dropdown-item" href="#">{{category.title}}</a>
+                      {% endfor %}
+                    </div>
+                   
+                  </div>
+
+
+
+       
+          
+    </div>
+
+
+
+<div class="jumbotron" style="background-color: rgb(109, 117, 111);">
+
+
+    <div class="card-columns">
+        {% for art in art %}
+        <div class="card" data-toggle="modal" data-target="#{{art.id}}">
+            <img src="{{art.art_image.url}}" alt="{{image.name}}" class="card-img" class="materialboxed">
+        </div>
+
+
+        <div class="modal fade " id="{{art.id}}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content modalcard">
+                        <h5 class="modal-title" id="imageheader">{{art.art_name}}</h5>
+                        <span class="btn btn-default">{{art.art_category}}</span> <a
+                            href="#" class="btn btn-default">{{art.art_location}}</a>
+                    <div class="modal-header">
+                        
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{art.art_image.url}}" alt="{{art.art_name}}" class="img-fluid" >
+                        <p class="imgdesc text-center">{{art.art_description}}</p>
+                       
+                    </div> <br><br>
+                    <div class="modal-footer">
+                      
+
+                        <input type="text" id="myInput" value="http://127.0.0.1:8000{{art.art_image.url}}" >
+                        <button class="btn btn-primary" onclick="myFunction()">
+                            Copy Link
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+
+  
+   <style>
+   
+ html, body{
+background-color: #333333;
+ }
+   
+   </style> 
+
+
+
+
+
+
+  {% endblock %}
