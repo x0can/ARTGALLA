@@ -46,6 +46,10 @@ class Location (models.Model):
         return self.place    
 
 
+    def delete_location(self):
+        location = Location.objects.filter().delete()
+        return location
+
 class Art(models.Model):
     art_name = models.CharField(max_length = 60)
     art_description = models.TextField()
