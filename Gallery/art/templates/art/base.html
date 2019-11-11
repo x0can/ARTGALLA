@@ -1,0 +1,407 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title> Artistco </title>
+    {% endif %}
+
+    {% block styles %}
+    {% bootstrap_css %}
+
+
+
+<!-- JQuery -->
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    {% endblock %}
+</head>
+
+<body>
+
+
+    {% block content %}
+
+
+
+
+    <div class="navbar navbar-inverse" role="navigation">
+
+  
+            <div class="container-fluid">
+              <div class="navbar-header">
+                
+                      
+                       
+                      
+          
+              </div><hr>
+          
+
+
+              <header class="site-header" style="padding-top: 20px;">
+                    <nav class="navbar navbar-expand-md navbar-dark bg-steel  fixed-top" style="padding-top: 20px;">
+                        <div class="container" style="padding-top: 20px;">
+                            
+                                <a class="btn" href="{% url 'index' %}" class="mr-4">Home</a>
+        
+                             <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+        
+                                
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+        
+                            <div class="collapse navbar-collapse" id="navbarToggle">
+        
+                                <div class="navbar-nav mr-auto">
+        
+
+                                    
+                                </div>
+
+
+                                
+                                <div class="navbar-nav">
+        
+
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+        
+                </header>
+    
+
+
+
+                <div class="jumbotron " style="background-color: #333333;">
+
+                        <form  role="search" action="{% url 'search_results' %}">
+                                    
+                                                  
+                                    
+                                <input type="text" class="form-control" placeholder="Search category" name="category">
+                               
+                                    <button type="submit" class="btn">Search</button>
+                                
+                            
+                
+                        </form> <br><br><br>
+                       
+                        <!-- Dropdown Trigger -->
+                
+                                
+
+                    
+
+                
+                
+                
+                       
+                          
+                    </div>
+                
+
+
+
+            </div>
+            
+
+
+
+
+
+
+
+
+    {%endblock%}
+
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+
+
+
+    </script>
+    {% bootstrap_javascript %}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+    </script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.materialboxed').materialbox();
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.slider');
+            var instances = M.Slider.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.slider').slider();
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $('.dropdown-trigger').dropdown();
+
+
+
+
+
+
+
+$(window).scroll(function(e) {
+
+// add/remove class to navbar when scrolling to hide/show
+var scroll = $(window).scrollTop();
+if (scroll >= 150) {
+    $('.navbar').addClass("navbar-hide");
+} else {
+    $('.navbar').removeClass("navbar-hide");
+}
+
+});
+
+
+
+
+
+if ( $(window).width() > 769) {   
+var mywindow = $(window);
+var mypos = mywindow.scrollTop();
+var up = false;
+var newscroll;
+mywindow.scroll(function () {
+    newscroll = mywindow.scrollTop();
+    if (newscroll > mypos && !up) {
+        $('.slidd').stop().fadeOut(730);
+        up = !up;
+        console.log(up);
+    } else if(newscroll < mypos && up) {
+        $('.slidd').stop().fadeIn(300);
+        up = !up;
+    }
+    mypos = newscroll;
+});
+}
+
+
+function myFunction(){
+    var copyText = document.getElementById("myInput");
+
+    copyText.select();
+    document.execCommand('copy');
+
+    alert('Copied: ' + copyText.value);
+}
+
+    </script>
+
+
+    <style>
+
+.navbar {
+    transition: top 0.5s ease;
+}
+
+.navbar-hide {
+    top: -56px;
+}
+
+
+/* simplecodetips.com - Static Navbar */
+.navbar-brand { font-size: 21px; font-weight: bolder; }
+.slidd { position: fixed; width: 100%; padding: 0px; margin: 0px; border: 0px; }
+.navbar-custom {
+	background-color: #0c4d8a !important;
+    color: #ffffff;
+  	border-radius: 0;
+}
+  
+.navbar-custom .navbar-nav > li > a {
+  	color:#fff;
+  	background-color: #0c4d8a; 
+}
+
+.navbar-nav { background-color: #0c4d8a; font-size: 12.6px; margin-left: 21px; }
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus { color: #ffffff; }
+      
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #1c5c99;
+}
+      
+.navbar-custom .navbar-brand { color:#fff; }
+.navbar-brand a { color: #fff; }
+.navbar-custom .navbar-toggle { background-color:#eeeeee; }
+.navbar-custom .icon-bar { background-color:#0c4d8a; }
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+@import url(http://fonts.googleapis.com/css?family=Bitter:400);
+
+html,body {
+	height:100%;
+    background:center no-repeat fixed url('https://wallpapercave.com/wp/wp2021948.jpg');
+    background-size: cover;
+    color:#444;
+    font-family: 'Lato', sans-serif;
+}
+
+@media (min-width:768px) {
+    h1 {
+        font-size:68px;
+    }
+}
+
+#btn{
+  font-size: 20px;
+}
+
+
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-left: -15px;
+  display: block;
+  padding: 7px;
+  text-align: center;
+  z-index:-1
+}
+
+.scroll-up {
+  position: fixed;
+  display: none;
+  z-index: 999;
+  bottom: 2em;
+  right: 2em;
+}
+
+.scroll-up a {
+  background-color: rgba(135, 135, 135, 0.5);
+  display: block;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+section {
+	padding-top:70px;  
+    padding-bottom:50px;
+    min-height:100%;
+    min-height:calc(100% - 0);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+@media (min-width:768px) {
+    .v-center {
+        height: 50%;
+        overflow: visible;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+    }
+}
+  
+#section1{
+	background-color: rgba(0,0,0,0.7);
+	color:#fff;
+	font-family: 'Bitter', serif;
+}
+
+
+
+ 
+.button1 {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button1 .btn {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button1 .btn:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button1:hover .btn {
+    padding-right: 25px;
+  }
+  
+  .button1:hover .btn:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
+
+
+    </style>
+
+
+    {% endblock %}
+
+</body>
+
+</html>
