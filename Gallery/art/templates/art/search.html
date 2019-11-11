@@ -1,0 +1,71 @@
+{% extends 'art/base.html' %}
+
+{% block content %}
+
+{{block.super}}
+
+{{category.title}}
+
+
+    <div class="row">
+
+        <div class="container">
+
+            <div class="row">
+              {% if art%}
+                <h4>Found {{ art|length }} of searched term {{message}}</h4>
+              {% else %}
+                <h4> Found 0 articles for the search term {{message}}</h4>
+              {% endif %}
+          
+            </div>
+
+        {% if art %}
+        {% for art in art %}
+       
+
+        <div class="row" style="color: white;">
+                <div class="col-md-6">
+  
+                  <div class="media-body">
+  
+                    <div class="article-metadata">
+                      <a href="#" class="mr-2">{{ art.category.title }}</a>
+  
+  
+  
+                    </div>
+  
+                    <h2><a href="#" class="article-title">{{ art.art_name }}</a></h2>
+                    <p class="article-content">{{ art.art_description }}</p>
+  
+                  </div>
+  
+                </div>
+
+
+                <div class="col-md-6">
+                        <div class="card-body">
+              
+                          <div class="card-content">
+                              <img src="{{art.art_image.url}}" class="materialboxed"  class="img-responsive" alt="Image"  width="550vh" height="300vh">
+                          </div>
+              
+                        </div>
+                      </div>
+
+              </div>
+
+
+    {% endfor %}
+
+
+  {% endif %}
+    
+
+
+
+
+
+
+  {% endblock %}
